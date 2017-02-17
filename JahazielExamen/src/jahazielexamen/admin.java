@@ -16,6 +16,35 @@ import javax.swing.table.DefaultTableModel;
  * @author Jahaziel
  */
 public class admin extends javax.swing.JFrame {
+    
+    
+    static public int [][] llenar (int [][] mastriz, int num){
+    for (int i = 0; i < mastriz.length; i++) {
+        for (int j = 0; j < mastriz.length; j++) {
+            if (j==0){
+                mastriz[i][j]= num;
+            }else if (i==j){
+                mastriz[i][j] = num;
+            } else{
+                mastriz[i][j] = 0;
+            }
+            
+        }
+    }
+    
+    return mastriz;
+}
+
+static int [][] pascal(int [][] x){
+    for (int i = 0; i < x.length; i++) {
+        for (int j = 0; j < x.length; j++) {
+            x[i+1][j+1]= x[i][j]+x [i][j+1];
+        }
+    }
+    return x;
+}
+
+
 
     /**
      * Creates new form admin
@@ -115,6 +144,11 @@ public class admin extends javax.swing.JFrame {
         Tablaventa = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -793,15 +827,73 @@ public class admin extends javax.swing.JFrame {
 
         tab_prin.addTab("Venta", jPanel38);
 
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 566, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 444, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("RIFA 1", jPanel15);
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 566, Short.MAX_VALUE)
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 444, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("RIFA2", jPanel16);
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 566, Short.MAX_VALUE)
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 444, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("RIFA3", jPanel17);
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 566, Short.MAX_VALUE)
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 444, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("RIFA4", jPanel18);
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 664, Short.MAX_VALUE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 625, Short.MAX_VALUE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         tab_prin.addTab("rifa", jPanel14);
@@ -830,6 +922,25 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                    
 
+    
+    static int random (int [][] x, int num){
+    Random r = new Random();
+    
+    int a,b;
+    num = 0;
+    while(num!=0){
+    a = 1 + r.nextInt(x.length-1);
+    b = 1+ r.nextInt(x.length-1);
+    for (int i = 0; i < x.length-1; i++) {
+        for (int j = 0; j < x.length-1; j++) {
+            num = x[a][b];
+        }
+    }
+    }
+   return num;
+}
+    
+    
     private void agregarMouseClicked(java.awt.event.MouseEvent evt) {                                     
         float Dinero;
         int edad;
@@ -1010,6 +1121,7 @@ public class admin extends javax.swing.JFrame {
                 lista.get(GuardarPCB.getSelectedIndex()).setEdad(edad);
                 lista.get(GuardarPCB.getSelectedIndex()).setIDBoleto(IDBoleto);
                 lista.get(GuardarPCB.getSelectedIndex()).setDepartamento(Departamento);
+                lista.get(GuardarPCB.getSelectedIndex()).setDinero(Dinero);
                 ((Empleados)lista.get(GuardarPCB.getSelectedIndex())).setEmpleo(empleo);
 
                 JOptionPane.showMessageDialog(this, "El contacto fue Modificado exitosamente");
@@ -1046,7 +1158,9 @@ public class admin extends javax.swing.JFrame {
                 lista.get(GuardarPCB.getSelectedIndex()).setID(ID);
                 lista.get(GuardarPCB.getSelectedIndex()).setEdad(edad);
                 lista.get(GuardarPCB.getSelectedIndex()).setIDBoleto(IDBoleto);
+                lista.get(GuardarPCB.getSelectedIndex()).setDinero(Dinero);
                 lista.get(GuardarPCB.getSelectedIndex()).setDepartamento(Departamento);
+                
                 ((Estudiantes)lista.get(GuardarPCB.getSelectedIndex())).setCarrera(carrera);
 
                 //-----------------resetear controles ----------------------------------------------------------------------
@@ -1081,6 +1195,7 @@ public class admin extends javax.swing.JFrame {
                 lista.get(GuardarPCB.getSelectedIndex()).setEdad(edad);
                 lista.get(GuardarPCB.getSelectedIndex()).setIDBoleto(IDBoleto);
                 lista.get(GuardarPCB.getSelectedIndex()).setDepartamento(Departamento);
+                lista.get(GuardarPCB.getSelectedIndex()).setDinero(Dinero);
                 ((Politico)lista.get(GuardarPCB.getSelectedIndex())).setPartido(partido);
 
                 JOptionPane.showMessageDialog(this, "El contacto fue modificado exitosamente");
@@ -1110,7 +1225,7 @@ public class admin extends javax.swing.JFrame {
 
     private void GuardarPCBItemStateChanged(java.awt.event.ItemEvent evt) {                                            
        // Modificar COmbo
-        
+      
         
         
 
@@ -1119,8 +1234,7 @@ public class admin extends javax.swing.JFrame {
     }                                           
 
     private void per_cbItemStateChanged(java.awt.event.ItemEvent evt) {                                        
-        
-        
+               
     }                                       
 
     private void per_cbActionPerformed(java.awt.event.ActionEvent evt) {                                       
@@ -1128,7 +1242,7 @@ public class admin extends javax.swing.JFrame {
     }                                      
 
     private void Eliminar_BTMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        
+       
           lista.remove(lista.get(per_cb.getSelectedIndex()));
  
     }                                        
@@ -1142,32 +1256,46 @@ public class admin extends javax.swing.JFrame {
     }                                        
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {                                      
-        int num = 1;
-        int tam;
-        int cont;
+        int numero = 1;
+        int tamaño=0, tamaño1=0;
+        int cont=0;
         
         if (Premio1.isSelected()){
-            tam = 3;
+            tamaño = 3;
             cont = 350;
         } else if (Premio2.isSelected()){
-            tam = 5;
+            tamaño = 5;
             cont = 10000;
         } else if (Premio3.isSelected()){
-            tam = 6; 
+            tamaño = 6; 
             cont = 1000000;
         } else if (Premio4.isSelected()){
-            tam = 7; 
+            tamaño = 7; 
             cont =1000000;
         }
         
-        int [][] c = new int [2*tam][tam*2];
-        int [] b = new int [tam];
-        while ( tam1 < tam){
-            llenar(c,num);
+        float n2;
+        int n1;
+        float total;
+        
+        n1 = cont;
+        n2 = lista.get(perVenta.getSelectedIndex()).getDinero();
+        
+        total = n2-n1;
+        
+        lista.get(perVenta.getSelectedIndex()).setDinero(total);
+        
+        int [][] c = new int [2*tamaño][tamaño*2];
+        int [] b = new int [tamaño];
+        String m = "";
+        while ( tamaño1 < tamaño){
+            llenar(c,numero);
             pascal(c);
-            b [tam1] = random(c, num);
-            tam1++;
+            b [tamaño1] = random(c, numero);
+            tamaño1++;
+            m = m + random(c, numero);
         }
+        
         
     }                                     
 
@@ -1317,6 +1445,10 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel34;
@@ -1340,6 +1472,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextField nombre_tf;
@@ -1398,50 +1531,9 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JTextField trabajo_tf2;
     private javax.swing.JTextField trabajo_tf3;
     // End of variables declaration                   
-ArrayList <Personas> lista = new ArrayList();
-
-static public int [][] llenar (int tam, int [][] x, int num){
-    for (int i = 0; i < x.length; i++) {
-        for (int j = 0; j < x.length; j++) {
-            if (j==0){
-                x[i][j]= num;
-            }else if (i==j){
-                x[i][j] = num;
-            } else{
-                x[i][j] = 0;
-            }
-            
-            
-        }
-    }
-    
-    return x;
-}
-
-static int [][] pascal(int [][] x, int num){
-    for (int i = 0; i < x.length; i++) {
-        for (int j = 0; j < x.length; j++) {
-            x[i+1][j+1]= x[i][j]+x [i][j+1];
-        }
-    }
-    return x;
-}
-
-static int [][] random (int [][] x, int num){
-    Random r = new Random();
-    
-    int a,b;
-    while(num!=0){
-    a = 1 + r.nextInt(x.length-1);
-    b = 1+ r.nextInt(x.length-1);
-    for (int i = 0; i < x.length-1; i++) {
-        for (int j = 0; j < x.length-1; j++) {
-            num = x[a][b];
-        }
-    }
-    }
-   return num;
-}
+    ArrayList <Personas> lista = new ArrayList();
+  
+ 
 
 
 }
