@@ -106,11 +106,13 @@ public class admin extends javax.swing.JFrame {
         jPanel38 = new javax.swing.JPanel();
         jLabel46 = new javax.swing.JLabel();
         perVenta = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        Premio1 = new javax.swing.JRadioButton();
         jLabel47 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        Premio2 = new javax.swing.JRadioButton();
+        Premio3 = new javax.swing.JRadioButton();
+        Premio4 = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tablaventa = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
 
@@ -701,17 +703,40 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setText("350 LP");
+        Premio1.setText("350 LP");
 
-        jLabel47.setText("Elija Boleto");
+        jLabel47.setText("Elija Premio");
 
-        jRadioButton2.setText("10,000 LP");
+        Premio2.setText("10,000 LP");
 
-        jRadioButton3.setText("100,000 LP");
+        Premio3.setText("100,000 LP");
 
-        jRadioButton4.setText("1,000,000 LP");
+        Premio4.setText("1,000,000 LP");
 
-        jButton1.setText("COMPRAR BOLETO");
+        Tablaventa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Dinero"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Float.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Tablaventa);
+
+        jButton1.setText("COMPRAR");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
@@ -729,17 +754,20 @@ public class admin extends javax.swing.JFrame {
                         .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel47)
                             .addGroup(jPanel38Layout.createSequentialGroup()
-                                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel38Layout.createSequentialGroup()
-                                        .addComponent(jRadioButton1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton2)))
+                                .addComponent(Premio1)
+                                .addGap(18, 18, 18)
+                                .addComponent(Premio2)
                                 .addGap(31, 31, 31)
-                                .addComponent(jRadioButton3)
+                                .addComponent(Premio3)
                                 .addGap(31, 31, 31)
-                                .addComponent(jRadioButton4)))))
-                .addContainerGap(266, Short.MAX_VALUE))
+                                .addComponent(Premio4))))
+                    .addGroup(jPanel38Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel38Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -752,13 +780,15 @@ public class admin extends javax.swing.JFrame {
                 .addComponent(jLabel47)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
-                .addGap(88, 88, 88)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(312, Short.MAX_VALUE))
+                    .addComponent(Premio1)
+                    .addComponent(Premio2)
+                    .addComponent(Premio3)
+                    .addComponent(Premio4))
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         tab_prin.addTab("Venta", jPanel38);
@@ -1111,6 +1141,36 @@ public class admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                        
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        int num = 1;
+        int tam;
+        int cont;
+        
+        if (Premio1.isSelected()){
+            tam = 3;
+            cont = 350;
+        } else if (Premio2.isSelected()){
+            tam = 5;
+            cont = 10000;
+        } else if (Premio3.isSelected()){
+            tam = 6; 
+            cont = 1000000;
+        } else if (Premio4.isSelected()){
+            tam = 7; 
+            cont =1000000;
+        }
+        
+        int [][] c = new int [2*tam][tam*2];
+        int [] b = new int [tam];
+        while ( tam1 < tam){
+            llenar(c,num);
+            pascal(c);
+            b [tam1] = random(c, num);
+            tam1++;
+        }
+        
+    }                                     
+
     /**
      * @param args the command line arguments
      */
@@ -1160,6 +1220,11 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JTextField ID_tf1;
     private javax.swing.JTextField Idboleto_tf;
     private javax.swing.JTextField Idboleto_tf1;
+    private javax.swing.JRadioButton Premio1;
+    private javax.swing.JRadioButton Premio2;
+    private javax.swing.JRadioButton Premio3;
+    private javax.swing.JRadioButton Premio4;
+    private javax.swing.JTable Tablaventa;
     private javax.swing.JTabbedPane Tb_person;
     private javax.swing.JTabbedPane Tb_person1;
     private javax.swing.JTabbedPane Tb_person2;
@@ -1273,10 +1338,7 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
