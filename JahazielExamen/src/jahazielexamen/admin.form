@@ -1142,7 +1142,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel47">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Elija Premio"/>
+                <Property name="text" type="java.lang.String" value="Elija Boleto"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButton2">

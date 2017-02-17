@@ -703,7 +703,7 @@ public class admin extends javax.swing.JFrame {
 
         jRadioButton1.setText("350 LP");
 
-        jLabel47.setText("Elija Premio");
+        jLabel47.setText("Elija Boleto");
 
         jRadioButton2.setText("10,000 LP");
 
